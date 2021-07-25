@@ -7,13 +7,16 @@
 //                  ( a : 10 , b : 30 ) → 200
 
 
-function solution (a, b) {
-
+function solution (a, b) { 
+  // 파라미터 값 대소관계 초기화
   let min = a > b ? b : a;
   let max = a > b ? a : b;
   let answer = 0;
 
+  // 작은 값 ~ 큰 값 까지 loop
   for (let i = min; i <= max; i ++) {
+    
+    // 현재 인덱스를 2로 나눈 값이 0 이 아닌 경우 answer에 반영한다.
     if ( i % 2 != 0 ) answer += i;
   }
 
