@@ -102,3 +102,6 @@ React.js 혹은 Vue.js를 사용하면서, CSR을 할지 SSR을 할지 고민하
 
 Google은 크럴러 안에 자바스크립트 엔진이 들어있어서 크게 문제될것 없지만, Naver 와 Daum 은 자바스크립트를 해석할 수 있는 엔진이 없기때문에 빈페이지로 인식하므로 문제가 된다.
 [참고](https://hyunseob.github.io/2019/05/26/google-io-2019-day-3/)
+[참조](https://velog.io/@ru_bryunak/SPA-%EC%82%AC%EC%9A%A9%EC%97%90%EC%84%9C%EC%9D%98-SSR%EA%B3%BC-CSR)
+
+---
