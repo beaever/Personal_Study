@@ -82,13 +82,13 @@ SPA 란 말 그대로 한개의 페이지를 가진 어플리케이션이다.
 
 ## SSR(Server Side Rendering)
 
-! [SSR](../img/SSR.png 'SSR의 과정')
+![SSR](../img/SSR.png 'SSR의 과정')
 많은 웹 사이트들은 페이지를 이동할 때마다 서버에 새로운 페이지에 대한 요청을 하는 방법을 택하여 사용하고 있다 이러한 방식이 SSR 이다.
 서버에서 렌더링을 마치고, Data가 결합된 HTML 파일을 내려주는 방식이 므로, 새로운 페이지로 이동할 때마다 서버에 요청하여 페이지를 받아야 하기 때문에, 받아오는 시간동안 깜빡거리는 현상을 볼 수 있다.
 
 ## CSR(Client Side Rendering)
 
-! [CSR](../img/CSR.png 'CSR의 과정')
+![CSR](../img/CSR.png 'CSR의 과정')
 CSR 방식은 최초 요청시에 HTML을 비롯해 CSS,JavaScript 등 각종 리소스를 받아온다. 이후에는 서버에 데이터만 요청하고, JavaScript View를 컨트롤 한다.
 당연히 초기 요청대 SSR 보다 많은 리소스를 요청하기 때문에, 렌더링 속도는 SSR이 더 빠르다.
 하지만 이후 다른 페이지로의 이동시에는 SSR 보다 빠른 페이지 전환 속도와 더 나은 사용자 경험을 제공한다.
@@ -101,7 +101,7 @@ React.js 혹은 Vue.js를 사용하면서, CSR을 할지 SSR을 할지 고민하
 물론 회사내에서만 사용하는 CMS라면 신경 쓸 필요가 없지만 공식 홈페이지와 같이 일반 사용자에게 검색되어야 하는 사이트라면 SEO 때문에 SSR에 대하여 생각하게 된다.
 
 Google은 크럴러 안에 자바스크립트 엔진이 들어있어서 크게 문제될것 없지만, Naver 와 Daum 은 자바스크립트를 해석할 수 있는 엔진이 없기때문에 빈페이지로 인식하므로 문제가 된다.
-[참고](https://hyunseob.github.io/2019/05/26/google-io-2019-day-3/)
-[참조](https://velog.io/@ru_bryunak/SPA-%EC%82%AC%EC%9A%A9%EC%97%90%EC%84%9C%EC%9D%98-SSR%EA%B3%BC-CSR)
+- [참고 링크](https://hyunseob.github.io/2019/05/26/google-io-2019-day-3/)
+- [참조 블로그](https://velog.io/@ru_bryunak/SPA-%EC%82%AC%EC%9A%A9%EC%97%90%EC%84%9C%EC%9D%98-SSR%EA%B3%BC-CSR)
+----
 
----
