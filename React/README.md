@@ -6,4 +6,9 @@ _**React.js을 공부하면서 궁금하것이나 정보들을 저장합니다.*
 
 ## REACT 성능을 최적화 하는 10가지 방법
 
-[참고블로그링크](https://uzihoon.com/post/ef453fd0-ab14-11ea-98ac-61734eebc216)
+[참고블로그](https://uzihoon.com/post/ef453fd0-ab14-11ea-98ac-61734eebc216)
+  
+## Redux
+   
+[참고블로그](https://medium.com/@jsh901220/react%EC%97%90-redux-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0-a8e6efd745c9)
+   
