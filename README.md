@@ -1,5 +1,7 @@
 # Personal_Study
 
+_**매일 학습하고, 궁금했던 정보들을 저장하고, 정리합니다.**_
+
 ## Personal Study repository
 
 ## XMLHttpRequest (XHR)
