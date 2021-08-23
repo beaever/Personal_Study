@@ -55,9 +55,9 @@ loading spinner 라이브러리 활용하여 구현하는 방법을 설명한다
 
 _이번 프로젝트를 진행하면서 react-router에 관련해 공부하기 위해 저장한다._
 
-- react-router // Web & App
-- react-router-dom // Web
-- react-router-native // App
+- react-router          // Web & App
+- react-router-dom      // Web
+- react-router-native   // App
 
 세가지 패키지는 위에 보이는것과 같이 각각 용도가 다르다.  
 사용방법은 쉽게 구글링으로 찾아볼 수 있다.

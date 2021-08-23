@@ -44,3 +44,4 @@ e.target은 자식 요소인 span을 리턴하고, e.currentTarget은 부모 요
 [참고블로그](https://velog.io/@edie_ko/JavaScript-event-target%EA%B3%BC-currentTarget%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90)
 
 ---
+   
