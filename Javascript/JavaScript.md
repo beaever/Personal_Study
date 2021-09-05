@@ -46,5 +46,17 @@ e.target은 자식 요소인 span을 리턴하고, e.currentTarget은 부모 요
 ---
      
 ## Event Loop
-[EVNET-LOOP](/img/event-loop.gif 'EVENT-LOOP 과정')
+[EVNET-LOOP](/img/event-loop.gif 'EVENT-LOOP 과정')   
 <img src="/img/event-loop.gif" alt="event-loop"></img>
+   
+---
+   
+## TEXT Highlight
+``` javascript
+getSelection() // 드래그시 드래그 한 내용 받아오기
+```
+자세한 코드는 text-highlight.js 안 코드 확인
+   
+---
+## Intersection Observer API
+[링크](https://developer.mozilla.org/ko/docs/Web/API/Intersection_Observer_API)
