@@ -65,3 +65,13 @@ _이번 프로젝트를 진행하면서 react-router에 관련해 공부하기 �
 ## [참고블로그](https://velog.io/@kwonh/React-react-router-dom-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0)
 
 ---
+   
+## Redux-persist
+   
+[redux-persist](https://www.npmjs.com/package/redux-persist)
+   
+---
+
+## React jest
+   
+[jest](https://www.zerocho.com/category/React/post/583231469a87ec001834a0ec)

@@ -194,3 +194,10 @@ consol.log('Bye');
 
 _**(무한스크롤과 페이징 각 장단점과 적용 기준)**_
 [참고블로그](https://brunch.co.kr/@hyoi0303/39)
+   
+---
+   
+## jwt
+[jwt](https://www.npmjs.com/package/jwt-decode)
+   
+---
