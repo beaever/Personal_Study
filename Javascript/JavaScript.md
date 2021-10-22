@@ -62,7 +62,7 @@ getSelection() // 드래그시 드래그 한 내용 받아오기
 [링크](https://developer.mozilla.org/ko/docs/Web/API/Intersection_Observer_API)
    
 ---
-## Clisure(함수 클로저)
+## Closure(함수 클로저)
 - 클로저란?   
   클로저는 일급 객체 함수의 개념을 이용하여 유효범위(scope)에 묶인 변수를 바인딩 하기 위한 일종의 기술이다. 기능상으로, 클로저는 함수를 저장한 레코드(recode)이며, 스코프(scope)의 인수   
   들은 클로저가 만들어질 때 정의 되며, 스코프 내의 영역이 소멸 되었어도 그에 대한 접근은 독립된 복사본인 클로저를 통해 이루어 질 수 있다.   
