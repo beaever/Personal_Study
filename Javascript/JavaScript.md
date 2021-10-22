@@ -60,3 +60,27 @@ getSelection() // 드래그시 드래그 한 내용 받아오기
 ---
 ## Intersection Observer API
 [링크](https://developer.mozilla.org/ko/docs/Web/API/Intersection_Observer_API)
+   
+---
+## Clisure(함수 클로저)
+- 클로저란?   
+  클로저는 일급 객체 함수의 개념을 이용하여 유효범위(scope)에 묶인 변수를 바인딩 하기 위한 일종의 기술이다. 기능상으로, 클로저는 함수를 저장한 레코드(recode)이며, 스코프(scope)의 인수   
+  들은 클로저가 만들어질 때 정의 되며, 스코프 내의 영역이 소멸 되었어도 그에 대한 접근은 독립된 복사본인 클로저를 통해 이루어 질 수 있다.   
+  즉, 독립적인 변수를 참조하는 함수이다. 이 함수들은 생성될 당시의 환경을 기억한다.   
+  위 방식으로 종료된 함수 내 특정 지역변수를 사용할 수 있다.   
+  ``` javascript
+  function plus() {
+    let a = 0;
+    return function () {
+    return ++a;
+    }
+  }
+  
+  let p = plus();
+  console.log(p()); // 1
+  console.log(p()); // 2
+  console.log(p()); // 3
+  ```
+  함수 plus 는 변수 p에 할당되며 실행이 종료 되었지만, p를 실행하면 plus 함수 내에 선언된 변수 a를 사용할 수 있다.   
+  [참조](https://heropy.blog/2017/11/10/closure/)
+  ---
