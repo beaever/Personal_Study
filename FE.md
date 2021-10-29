@@ -201,3 +201,9 @@ _**(무한스크롤과 페이징 각 장단점과 적용 기준)**_
 [jwt](https://www.npmjs.com/package/jwt-decode)
    
 ---
+   
+## URI & URL
+[URI&URL](https://velog.io/@jch9537/URI-URL)
+   
+---
+
