@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./node_modules/react/umd/react.development.js"></script>
+    <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script>
+      function App() {
+        const loadFBscript = () => {
+          const script = document.createElement('script');
+          script.src = 'https://connect.facebook.net/en_US/sdk.js';
+
+          document.body.appendChild(script);
+
+          script.onload = function () {
+            FB.init({
+              appId: '389848169462088',
+              cookie: true,
+              xfbml: true,
+              version: 'v12.0',
+            });
+
+            FB.AppEvents.logPageView();
+            console.log(' load success');
+          };
+        };
+
+        React.useEffect(() => {
+          loadFBscript();
+        }, []);
+
+        return React.createElement(
+          'div',
+          { className: 'container' },
+          React.createElement(Header)
+        );
+      }
+
+      function Header() {
+        const onClickLogin = () => {
+          FB.login(onLogin, { scope: 'email' });
+        };
+
+        const onClickLogout = () => {
+          FB.logout();
+          localStorage.removeItem('fblogin');
+        };
+
+        const onLogin = (res) => {
+          if (res.status === 'connected') {
+            FB.api('/me', { fields: 'email,name' }, function (response) {
+              localStorage.setItem('fblogin', JSON.stringify(response));
+              history.go(0);
+            });
+          }
+        };
+
+        const isLogined = React.useMemo(() => {
+          return localStorage.getItem('fblogin');
+        }, []);
+
+        const name = React.useMemo(() => {
+          const res_str = localStorage.getItem('fblogin');
+          if (res_str) {
+            const res = JSON.parse(res_str);
+
+            return res.name ?? '';
+          } else {
+            return '';
+          }
+        }, []);
+
+        return React.createElement(
+          'header',
+          {
+            style: {
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              backgroundColor: 'green',
+            },
+          },
+          /*#__PURE__*/ React.createElement('img', {
+            src: 'logo',
+          }),
+          isLogined
+            ? React.createElement(
+                'button',
+                { className: 'btn btn-danger', onClick: onClickLogout },
+                `${name}님 안녕하세요 로그아웃하기`
+              )
+            : React.createElement(
+                'button',
+                {
+                  className: 'btn btn-primary',
+                  onClick: () => {
+                    onClickLogin();
+                  },
+                },
+                '\uB85C\uADF8\uC778\uD558\uAE30'
+              )
+        );
+      }
+
+      ReactDOM.render(
+        React.createElement(App),
+        document.getElementById('root')
+      );
+    </script>
+  </body>
+</html>
