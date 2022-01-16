@@ -73,13 +73,13 @@ _이번 프로젝트를 진행하면서 react-router에 관련해 공부하기 �
 ---
 
 ## React jest
-- 프론트 TEST 라이브러리
+- 프론트 TEST 라이브러리   
 [jest](https://www.zerocho.com/category/React/post/583231469a87ec001834a0ec)
    
 ---
    
 ## react-query 가 redux 같은 전역 상태관리 라이브러리를 대체 할 수 있을까?
-- 프론트의 전역 상태관리로 redux 라는 라이브러리가 제일 널리 알려져있었다, 하지만 요근래 Redux가 아닌 Recoil 혹은 React-query, SWR 같은 라이브러리가 전역상태관리 라이브러리로 대체 될꺼다 라는 말이 있다. 그 주에의 관련된 정보를 저장한다.
+- 프론트의 전역 상태관리로 redux 라는 라이브러리가 제일 널리 알려져있었다, 하지만 요근래 Redux가 아닌 Recoil 혹은 React-query, SWR 같은 라이브러리가 전역상태관리 라이브러리로 대체 될꺼다 라는 말이 있다. 그 주에의 관련된 정보를 저장한다.   
 [전역상태관리_대체_라이브러리](https://velog.io/@yrnana/react-query%EA%B0%80-redux%EA%B0%99%EC%9D%80-%EC%A0%84%EC%97%AD-%EC%83%81%ED%83%9C%EA%B4%80%EB%A6%AC-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%A5%BC-%EB%8C%80%EC%B2%B4%ED%95%A0-%EC%88%98-%EC%9E%88%EC%9D%84%EA%B9%8C)
   
 ---
