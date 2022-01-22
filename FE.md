@@ -194,16 +194,22 @@ consol.log('Bye');
 
 _**(무한스크롤과 페이징 각 장단점과 적용 기준)**_
 [참고블로그](https://brunch.co.kr/@hyoi0303/39)
-   
----
-   
-## jwt
-[jwt](https://www.npmjs.com/package/jwt-decode)
-   
----
-   
-## URI & URL
-[URI&URL](https://velog.io/@jch9537/URI-URL)
-   
+
 ---
 
+## jwt
+
+[jwt](https://www.npmjs.com/package/jwt-decode)
+
+---
+
+## URI & URL
+
+[URI&URL](https://velog.io/@jch9537/URI-URL)
+
+---
+
+## CSS
+
+_**(style을 조금더 효율적으로 사용할 수 있게, 단축속성 등 의 여러가지 팁)**_
+[Style](https://velog.io/@edie_ko/css-enabling-pattern)
