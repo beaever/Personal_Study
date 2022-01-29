@@ -211,5 +211,12 @@ _**(무한스크롤과 페이징 각 장단점과 적용 기준)**_
 
 ## CSS
 
-_**(style을 조금더 효율적으로 사용할 수 있게, 단축속성 등 의 여러가지 팁)**_
+_**(style을 조금더 효율적으로 사용할 수 있게, 단축속성 등 의 여러가지 팁)**_  
 [Style](https://velog.io/@edie_ko/css-enabling-pattern)
+
+---
+
+## Netlify
+
+_**netlify로 페이지 배포 하기**_  
+[참고](https://goddino.tistory.com/190)
