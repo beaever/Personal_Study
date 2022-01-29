@@ -220,3 +220,10 @@ _**(style을 조금더 효율적으로 사용할 수 있게, 단축속성 등 �
 
 _**netlify로 페이지 배포 하기**_  
 [참고](https://goddino.tistory.com/190)
+
+---
+
+## 운영체제
+
+_**레스토랑으로 비교해서 알아보는 운영체제라는 이름으로 운영체제에 대하여 설명한다.**_
+[레스토랑으로 비교해서 알아보는 운영체제](https://yozm.wishket.com/magazine/detail/1269/%EB%B3%B4%EB%8A%94/?fbclid=IwAR1asPW4GEomwF4oKGk7XxtsXkm4ihiGvNaMMBxYMrldC6jDzoNUY0KzGeQ)
