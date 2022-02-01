@@ -86,7 +86,7 @@ _이번 프로젝트를 진행하면서 react-router에 관련해 공부하기 �
 
 ## react-router-loading 라이브러리 
 - react-router-loading 라이브러리를 사용하면, 페이지 이동간의 로딩을 자유롭게 커스터마이징 가능하다.
-- 위 라이브러리를 사용하므로, 조금더 UI 완성도가 높은 서비스를 제작할 수 있다. 
+- 위 라이브러리를 사용하므로, 조금더 UI 완성도가 높은 서비스를 제작할 수 있다.   
 [react-router-loading](https://www.npmjs.com/package/react-router-loading)
 
 ---
