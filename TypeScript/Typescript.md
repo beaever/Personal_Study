@@ -10,7 +10,7 @@
 
 ## 함수의 반환 값에 타입을 정의하는 방식
 
-``` typescript
+``` javascript typescript
 function add(): number {
 }
 ```
