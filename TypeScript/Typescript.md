@@ -7,3 +7,10 @@
 [참고블로그](https://www.typescriptlang.org/ko/docs/handbook/enums.html)
    
 ---
+
+## 함수의 반환 값에 타입을 정의하는 방식
+
+``` typescript
+function add(): number {
+}
+```
