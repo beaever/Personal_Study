@@ -9,6 +9,32 @@
 💡 제네릭은 C#m Java 등의 언어에서 재사용성이 높은 컴포넌트를 만들 떄 자주 활용되는 특징입니다. 특히, 한가지 타입보다 여러 가지 타입에서 동작하는 컴포넌트를 생성하는데 사용됩니다.
 </aside>   
 
+## Static
+### 스테틱 메서드 (Static method)
+`class`를 통한 별도의 인스턴스나 객체를 생성하지 않고도, 바로 `class` 내부의 함수 및 인자를 사용할 수 있는방법.
+
+```typeScript
+Object_from_class = new Class;
+// class를 통한 객체를 생성하거나, 내부 인자에 접근하기 위해선 반드시 class를 생성한 이후 진행 가능하였습니다.
+```
+
+```typeScript
+class Block {
+    public index: number;
+    public hash: string;
+    public previousHash: string;
+    public data: string;
+    public timestamp: number;
+
+    static calculateBlockhash = (index:number, previousHash:string, timestamp:number, data:string) => {
+        CryptoJS.SHA256(index + previousHash + timestamp + data).toString()
+    }
+
+
+// Static method
+Block.calculateBlockhash
+```
+
 ## enums
 열거형은 TypeScript가 제공하는 기능중 하나 이다.
 [참고블로그](https://www.typescriptlang.org/ko/docs/handbook/enums.html)
