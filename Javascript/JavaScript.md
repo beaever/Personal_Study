@@ -82,6 +82,6 @@ getSelection() // 드래그시 드래그 한 내용 받아오기
   console.log(p()); // 3
   ```   
 함수 plus 는 변수 p에 할당되며 실행이 종료 되었지만, p를 실행하면 plus 함수 내에 선언된 변수 a를 사용할 수 있다.   
- 
+<sub>이전의 환경을 기억하는것</sub>
 [참조](https://heropy.blog/2017/11/10/closure/)   
 ---
