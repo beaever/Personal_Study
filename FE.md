@@ -255,14 +255,97 @@ SnowPack 이란 Webpack 처럼 복잡하고 무거운 빌드 시스템의 대안
 - 최적화된 빌드를 지원하며 선호하는 번들러를 사용하기 위한 플러그인을 지원합니다.
 - Babel, Sass, MDX 등 기능 확장을 위한 [Build Plugin](https://www.snowpack.dev/plugins)을 지원합니다.
 
-<aside>
 💡 ESM을 사용하려면 `script` 요소에 `type="module"` 속성을 추가해야 합니다.
 그러면 Inline Script 안에서도 `import` 구문을 사용 할 수 있게 됩니다.
 
-</aside>
-
-<aside>
 💡 IE는 네이티브 모듈을 지원하지 않습니다. 하지만 Snowpack의 Webpack Plugin으로 빌드된 결과에서는 네이티브 모듈을 사용하지 않으므로 상관없습니다.
 다만, IE를 반드시 지원해야 한다면 IE에서 개발 서버를 사용할 수 없으므로 디버깅에 어려움을 가질 수 있습니다.
 
-</aside>
+---
+
+## TreeShaking (트리쉐이킹)
+
+트리쉐이킹이란 나무흔들기, 나무를 흔들어 죽은 나뭇잎을 떨어뜨리는 것처럼 필요없는 코드들을 제거해주어 번들파일의 크기나 번들링의 시간을 줄여주는 작업을 트리쉐이킹이라고 합니다.
+
+TreeShaking 을 적용하기 위해서는 몇 가지 조건이 있습니다.
+
+[https://helloinyong.tistory.com/305](https://helloinyong.tistory.com/305)
+
+1. Babelrc 파일 설정
+   **_”ES6 문법을 CommonJS로 변환되지 않도록 막기”_**
+   Babel은 자바스크립트 문법이 브라우저에서 호환이 가능하도록 ES5 문법으로 변환하는 라이브러리 입니다. 이 작업을 우리는 polyfill 이라 부르고 이는 현재 웹 개발에 있어서 필수 요소 중 하나라고 봐도 무방합니다. 하지만 이 Babel의 역할은 TreeShaking 작업을 하는데 있어 걸림돌이 되는 요소이기도 합니다.
+   Babel은 import를 `require()` 구문으로 변환을 시키는데, require은 export 하는 모든 모듈을 가져오게 됩니다. 이를 방지 하기 위해 Babelrc 파일을 아래처럼 설정합니다.
+
+```tsx
+{
+  “presets”: [
+    [
+      “@babel/preset-env”,
+      {
+	    "modules": falseㅣ
+      }
+    ]
+ ]
+}
+```
+
+**_babel-preset-env에 modules를 false로 하면, import, export의 구문을 ES5의 문법으로 변환시키지 않습니다._**
+
+1. 모듈 내 Side-Effect 발생 여부 확인
+   **_Side-Effect란, 현재 모듈 외에 다른 코드에 영향을 끼치는 요소가 있으면, 이를 Side-Effect가 있다고 할 수 있다._**
+
+```jsx
+let animals = ['dog', 'cat'];
+
+const addAnimals = (name) => {
+  animals.push(name);
+};
+```
+
+위의 코드는 Side-Effect가 발생하고 있는 예시이다.
+
+실제 addAnimals() 라는 함수가 쓰이지 않아 다른 코드에 영향을 주지 않는다 해도, addAnimals() 함수 바깥의 변수를 변경하는 작업으로 인해 Side-Effect를 일으킨다고 판단하여 TreeShaking을 하지 못하게 된다.
+
+Side-Effect를 일으키지 않는 모듈은, 바깥의 변수의 값을 변경하지 않고 모듈 내 코드로만 봤을때에 Input 파라미터 값에 의해 아웃풋 결과 값을 예측할 수 있도록 되어 있어야 TreeShaking을 하기에 안전한 모듈이다.
+
+그럼에도 불구하고 개발자의 주관적으로 보았을때에, 해당 모듈이 Side-Effect를 발생시키지 않는다고 판단할 경우 Side-Effect가 일어나지 않는 모듈이라고 설정할 수 있다.
+
+```tsx
+{
+  "name": "webpack-tree-shaking-example",
+  "version": "1.0.0",
+  "sideEffects": false
+}
+```
+
+package.json 파일을 위와 같이 설정한다.
+
+위와 같이 설정한다면, 모든 모듈이 Side-Effect를 발생하지 않는다고 정의하는것과 같다.
+
+혹은 아래와 같이 설정하여 특정 파일만 Side-Effect를 발생하지 않는 모듈이라고 따로 선언 할 수 있다.
+
+```tsx
+{
+  "name": "webpack-tree-shaking-example",
+  "version": "1.0.0",
+  "sideEffects": [
+    "./src/utils/utils.js"
+  ]
+}
+```
+
+1. 필요한 모듈만 Import 하여 사용하기
+
+```tsx
+import { module1, module2 } from '../utilFile';
+```
+
+위 코드에서 utilFile 내에 일부의 코드만 import 하여 가져온다.
+
+위와 같은 방식으로 대부분 최신 WebPack 환경에서 TreeShaking 조건을 갖추었기 때문에 사용하지 않는 불필요한 코드를 빌드하지 않도록 TreeShaking을 적용 사용 할 수 있다.
+
+만약 모든 조건을 갖추었지만, 사용하려는 외부 코드 혹은 라이브러리가 TreeShaking이 이루어 지지 않는다면, import 해서 불러오려는 코드가 ES6(export)로 내보내고 있는지 확인해야한다.
+
+만약 ES6가 아니라 CommonJS (modules.export)로 내보내고 있다면, 이는 TreeShaking을 할 수 없는 모듈이다.
+
+위와 같은 이슈의 가장 대표적 예시로 lodash 라이브러리가 있으며, 해결방법으로는 lodash-es 모듈을 사용하면 TreeShaking이 가능하다.
