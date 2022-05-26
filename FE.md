@@ -242,3 +242,27 @@ _**프론트엔드 개발자에게 꼭 필요한 32가지의 UI요소**_
 [아코디언 UI](http://www.gisdeveloper.co.kr/?p=5726)
 
 ---
+
+## Snowpack
+
+SnowPack 이란 Webpack 처럼 복잡하고 무거운 빌드 시스템의 대안으로 만들어졌으며, JavaScript 네이티브 모듈 시스템 (ESM, JavaScript Modules)을 사용해 무거운 번들링 작업을 제거하고, 프로젝트 크기와 상관없이 빠른 속도를 제공하도록 만들어졌습니다.
+
+- 개발서버는 처음에만 의존 모듈 설치 시간이 필요로 하며, 그 다음부터 50ms 안에 실행됩니다.
+- 같은 파일을 두번 빌드하지 않고, 브라우저 안에서 자바스크립트 네이비트 모듈 (ESM) 사용으로 가능합니다.
+- 소스가 변경되어도 브라우저 새로고침이 필요하지 않다. React, Preact, Svelet에서 [HMR+Fast refresh](https://www.snowpack.dev/concepts/hot-module-replacement)를 지원합니다.
+  - 코드가 수정되어도 컴포넌트의 상태를 유지합니다. 예를들어 React에서 `useState` 등 으로 설정된 값을 초기화 하지 않음으로서 더 빠른 refresh가 가능합니다.
+- JSX, TypeScript, React, Preact, CSS 모듈을 기본 지원합니다.
+- 최적화된 빌드를 지원하며 선호하는 번들러를 사용하기 위한 플러그인을 지원합니다.
+- Babel, Sass, MDX 등 기능 확장을 위한 [Build Plugin](https://www.snowpack.dev/plugins)을 지원합니다.
+
+<aside>
+💡 ESM을 사용하려면 `script` 요소에 `type="module"` 속성을 추가해야 합니다.
+그러면 Inline Script 안에서도 `import` 구문을 사용 할 수 있게 됩니다.
+
+</aside>
+
+<aside>
+💡 IE는 네이티브 모듈을 지원하지 않습니다. 하지만 Snowpack의 Webpack Plugin으로 빌드된 결과에서는 네이티브 모듈을 사용하지 않으므로 상관없습니다.
+다만, IE를 반드시 지원해야 한다면 IE에서 개발 서버를 사용할 수 없으므로 디버깅에 어려움을 가질 수 있습니다.
+
+</aside>
