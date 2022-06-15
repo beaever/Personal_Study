@@ -122,47 +122,48 @@ getSelection(); // 드래그시 드래그 한 내용 받아오기
 
 1. this
 
+   - 일반 함수
+     자바스크립트에서 모든 함수는 실행될 때마다 함수 내부에 this라는 객체가 추가 된다.
+     (일반 함수에서 this가 바인딩 되는 상황)
 
-    - 일반 함수
-      자바스크립트에서 모든 함수는 실행될 때마다 함수 내부에 this라는 객체가 추가 된다.
-      (일반 함수에서 this가 바인딩 되는 상황)
-      1. 함수 실행 시에는, 전역 객체를 가르킨다.
-      2. 메소드 실행 시에는 메소드를 소유하고 있는 객체를 가르킨다.
-      3. 생성자 실행 시에는 새롭게 만들어진 객체를 가리킨다.
+     1. 함수 실행 시에는, 전역 객체를 가르킨다.
+     2. 메소드 실행 시에는 메소드를 소유하고 있는 객체를 가르킨다.
+     3. 생성자 실행 시에는 새롭게 만들어진 객체를 가리킨다.
 
-      일반 함수는 함수를 선언할 때에 `this`에 바인딩할 객체가 정적으로 결정되는 것이 아니고, 함수를 호출할 때 함수가 어떻게 호출되었는지에 따라 `this`에 바인딩할 객체가 동적으로 결정된다.
+     일반 함수는 함수를 선언할 때에 `this`에 바인딩할 객체가 정적으로 결정되는 것이 아니고, 함수를 호출할 때 함수가 어떻게 호출되었는지에 따라 `this`에 바인딩할 객체가 동적으로 결정된다.
 
-    - 화살표 함수
-      화살표 함수는 선언할 때 `this`에 바인딩할 객체가 정적으로 결정된다.
-      화살표 함수의 `this`는 언제나 상위 스코프의 `this`를 가리킨다. (Lexical this)
-      또한, call, apply, bind method를 사용하여 `this`를 변경할 수 없다.
+   - 화살표 함수
+     화살표 함수는 선언할 때 `this`에 바인딩할 객체가 정적으로 결정된다.
+     화살표 함수의 `this`는 언제나 상위 스코프의 `this`를 가리킨다. (Lexical this)
+     또한, call, apply, bind method를 사용하여 `this`를 변경할 수 없다.
 
-      ```javascript
-        function fun() {
-          this.name = "하이";
-            return {
-              name: "바이",
-                speak: function () {
-                console.log(this.name);
-              },
-            };
-          }
+     ```javascript
+       function fun() {
+         this.name = "하이";
+           return {
+             name: "바이",
+               speak: function () {
+               console.log(this.name);
+             },
+           };
+         }
 
-          function arrFun() {
-            this.name = "하이";
-              return {
-                name: "바이";
-                  speak: () => {
-                    console.log(this.name);
-                  },
-              };
-          }
+         function arrFun() {
+           this.name = "하이";
+             return {
+               name: "바이";
+                 speak: () => {
+                   console.log(this.name);
+                 },
+             };
+         }
 
-          const fun1 = new fun();
-          fun1.speak(); // 바이
+         const fun1 = new fun();
+         fun1.speak(); // 바이
 
-          const fun2 = new arrFun();
-          fun2.speak(); // 하이
-      ```
-      일반 함수 사용시 바이가 찍히고 화살표 함수를 사용했을때 하이가 찍힘.
-      일반 함수는 자신이 종속된 객체를 `this`로 가르키고 화살표 함수는 자신이 종속된 인스턴스를 가르킨다.
+         const fun2 = new arrFun();
+         fun2.speak(); // 하이
+     ```
+
+     일반 함수 사용시 바이가 찍히고 화살표 함수를 사용했을때 하이가 찍힘.
+     일반 함수는 자신이 종속된 객체를 `this`로 가르키고 화살표 함수는 자신이 종속된 인스턴스를 가르킨다.
