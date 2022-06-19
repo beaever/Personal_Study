@@ -349,3 +349,33 @@ import { module1, module2 } from '../utilFile';
 만약 ES6가 아니라 CommonJS (modules.export)로 내보내고 있다면, 이는 TreeShaking을 할 수 없는 모듈이다.
 
 위와 같은 이슈의 가장 대표적 예시로 lodash 라이브러리가 있으며, 해결방법으로는 lodash-es 모듈을 사용하면 TreeShaking이 가능하다.
+
+---
+
+## Storybook
+
+UI Components를 직접 보면서 개발 할 수 있는 환경을 제공하는 툴 이며, 스토리북은 프로젝트 내에서 독립된 환경으로 실행 되기 때문에 앱의 특정한 의존성에서 벗어나서 순수 UI 개발에 집중 할 수 있도록 합니다.
+
+또한, React 와 React Native 환경에서도 사용할 수 있으며, 스토리북을 사용할 시 팀과의 협업 구조에서도 원활한 커뮤니케이션과 반복을 통한 개발 생산성 향상의 효과를 볼 수 있습니다.
+
+Storybook 자체 에서 Testing 기능도 제공하므로, UI Component의 개별적인 Testing도 쉽고 직관적으로 활용 할 수 있습니다.
+
+### Install
+
+### NPM
+
+```tsx
+npm i @stroybook/cli
+getstorybook init
+
+npm run storybook
+```
+
+### Yarn
+
+```tsx
+yarn add @storybook/cli
+getstorybook init
+
+yarn storybook
+```
