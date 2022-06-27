@@ -161,3 +161,5 @@ _이번 프로젝트를 진행하면서 react-router에 관련해 공부하기 �
 - DOM Event (Click, key press, mouse move 등)
 - TImer Function (setTimeout, setInterval) 의 tick Event
 - Ajax 통신 / Promise
+
+## hydrate
