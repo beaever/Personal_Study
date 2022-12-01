@@ -379,3 +379,94 @@ getstorybook init
 
 yarn storybook
 ```
+
+## CleanArchitecture
+
+출처: [https://techblog.woowahan.com/2647/](https://techblog.woowahan.com/2647/)
+
+### 의존성 규칙
+
+대부분의 아키텍처는 세부적인 차이는 있어도 공통적인 목표는 계층을 분리하여 관심사의 분리하는 것이라하며, 이런 아키텍처가 동작하기 위해서는 의존성 규칙을 지켜야 합니다.
+
+의존성 규칙은 모든 소스 코드 의존성은 반드시 외부에서 내부로, 높은 수준의 정책을 향해야 합니다.
+즉, 업무 로직을 담당하는 코드들이 DB 또는 Web 같이 구체적인 세부 사항에 의존하지 않아야 합니다.
+이를 통해 **_업무로직(고수준 정책)은 세부 사항들(저수준 정책)의 변경에 영향을 받지 않도록 할 수 있습니다._**
+
+이러한 의존성 규칙을 지키이 위해서는 “What data crosses the boundaries”, “Crossing boundaries”와 같은 상황에 대해 설명합니다.
+
+<aside>
+👉 고 수준: 상위 수준의 개념, 추상화된 개념
+ex) 데이터를 저장한다, 구역 배달료를 구한다.
+저 수준: 추상화된 개념을 실제 어떻게 구현할지에 대한 세부적인 개념
+ex) RDB에 데이터를 저장한다, 폴리곤 구역에 속한 배달건에 대해 배달료를 구한다.
+
+</aside>
+
+### What data crosses the boundaries
+
+1. 경계 간의 데이터를 전달할 때 무엇을 전달해야 하는가
+   **의존성 규칙을 지키이 위해서는 우리가 사용하는 단순하고, 고립된 형태의 데이터 구조를 사용하는 것을 추천합니다.**
+   만약 DB 형식의 데이터 구조 또는 Framework 종속적인 데이터 구조가 사용되게 된다면, 이러한 저수준의 데이터 형식을 고수준에서 알아야 하기 때문에 의존성 규칙을 위반하게 됩니다.
+   **_우아한형제들 개발팀에서는 이러한 경계 간의 데이터를 전달할 때 간단한 구조의 Data Transfer Objects(DTO)를 이용하고 있습니다._**
+
+### DTO 간의 중복 코드
+
+업무 로직을 구현하다 보면 클라이언트로부터 전달되는 데이터를 DTO를 통하여 받아서 처리 합니다.
+일반적으로 요청은 크게 등록, 수정, 조회, 삭제 의 CRUD 형태로 오게 되는데, 요청에 따라 DTO를 어떻게 만들면 좋을지에 대한 고민을 해보았습니다.
+초반에 로직을 구현하다 보면 생성과 수정 요청은 거의 비슷한 형식의 데이터, 검증 로직을 필요하게 됩니다. 때문에 이를 통합하여 중복 코드를 제거할지, 기능에 따라 분리할지에 대한 고민을 많이 하게 됩니다.
+
+```tsx
+public class CreateRequest {
+	private String name;
+	private LocalDate startDate;
+	private LocalDate endDate;
+	...
+}
+
+public class UpdateRequest {
+	private String name;
+	private LocalDate startDate;
+	private LocalDate endDate;
+	...
+}
+```
+
+<클린 아키텍처> 책에서 이에 대한 좋은 내용을 언급합니다.
+
+1. 진짜 중복
+
+- 한 인스턴스가 변경되면, 동일한 변경을 그 인스턴스의 모든 복사본에 반드시 적용해야 한다.
+
+2. 우발적 중복 (거짓된 중복)
+
+- 중복으로 보이는 두 코드의 영역이 각자의 경로로 발전한다면, 즉 서로 다른 속도와 다른 이유로 변경된다면 이 두 코드는 진짜 중복이 아니다.
+
+위 참고 블로그의 글쓴이는 저장과 수정 사이의 DTO의 중복은 우발적 중복에 속한다고 생각합니다.
+초반의 코드가 비슷할지 모르지만 각 기능은 서로 다른 이유와 속도로 변경될 가능성이 높기 때문입니다.
+
+간단한 예시로 스케줄을 저장하는 기능을 개발한다고 가정합니다.
+스케줄을 처음 저장할 댸는 시작 일자가 과거 시간이 될 필요가 없기 때문에 이에 대한 유효성 검사를 진행해야합니다.
+
+```tsx
+public class CreateRequest {
+	public void assertValidation() {
+		if (startDate.isBefore(LocalDate.now())) {
+			throw new IllegalArgumentException();
+		}
+	}
+}
+```
+
+하지만 수정을 하는 경우 이미 해당 데이터가 과거 날짜일 수 있기 때문에 StartDate에 대한 유효성 검사가 필요 없습니다.
+
+```tsx
+public class UpdateRequest {
+    public void assertValidation() {
+        if(startDate.isBefore(LocalDate.now())) { ---> 불필요한 체크
+            throw new IllegalArgumentException();
+        }
+    }
+}
+```
+
+**_이렇게 서로 다른 이유와 속도로 변경이 될 수 있는 상황에서는 DTO를 분리하는 것이 좋은 방법이라고 생각합니다._**
